@@ -12,24 +12,28 @@ const Game = () => {
       return field;
     }
   }).join(" ");
-  
-  const [player, setPlayer] = useState(1);
-  const [recentSubmission, setRecentSubmission] = useState('');
-  const [finalPoem, setFinalPoem] = useState('');
+
+  const submissions = [];
+  const [player, setPlayer] = useState(1);  
+  const [submissionsList, setsubmissionsList] = useState(submissions);
+
+
+  const onPlayerSubmissionCallback = (playerSubmission) => {
+    // const sentence = "The " + submission.adjective1 + " " + submission.noun1 + " " + submission.adverb + " " + submission.verb + " the " + submission.adjective2 + " " + submission.noun2;
+    // make a copy of submissionsList
+    const newSubmissions = [...submissionsList];
+    
+    // add playerSubmission to submissions list
+    newSubmissions.push(playerSubmission); 
+    // update state of submissionsList to new list
+    setsubmissionsList(newSubmissions);  
+    // increment player
+    setPlayer(player + 1);
+  }
 
   // on reset
   // setPlayer(1)
-
-  const onPlayerSubmissionCallback = (submission) => {
-    const sentence = "The " + submission.adjective1 + " " + submission.noun1 + " " + submission.adverb + " " + submission.verb + " the " + submission.adjective2 + " " + submission.noun2;
-    
-    setRecentSubmission(sentence);    
-    // increment player
-    setPlayer(player + 1);
-    // add recent submission to final poem    
-    setFinalPoem(finalPoem + sentence);    
-  }
-
+  
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -42,11 +46,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission recentSubmission={recentSubmission}/>
+      <RecentSubmission recentSubmission={submissionsList[submissionsList.length - 1]}/>
 
       <PlayerSubmissionForm player={player} onSubmit={onPlayerSubmissionCallback} />
 
-      <FinalPoem finalPoem={finalPoem}/>
+      <FinalPoem finalPoem={submissionsList}/>
 
     </div>
   );
