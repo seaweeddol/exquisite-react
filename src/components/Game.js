@@ -13,9 +13,8 @@ const Game = () => {
     }
   }).join(" ");
 
-  const submissions = [];
   const [player, setPlayer] = useState(1);  
-  const [submissionsList, setsubmissionsList] = useState(submissions);
+  const [submissionsList, setsubmissionsList] = useState([]);
 
 
   const onPlayerSubmissionCallback = (playerSubmission) => {
@@ -34,7 +33,7 @@ const Game = () => {
 
   // on reset
   // setPlayer(1)
-
+  
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -47,7 +46,7 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission recentSubmission={submissionsList[submissionsList.length - 1]}/>
+      <RecentSubmission className={submissionsList.length > 0 ? "show" : "hide"} recentSubmission={submissionsList[submissionsList.length - 1]}/>
 
       <PlayerSubmissionForm player={player} onSubmit={onPlayerSubmissionCallback} />
 

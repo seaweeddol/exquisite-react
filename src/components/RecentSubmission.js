@@ -3,7 +3,7 @@ import './RecentSubmission.css';
 
 const RecentSubmission = (props) => {
   return (
-    <div className="RecentSubmission">
+    <div className={"RecentSubmission " + props.className}>
       <h3>The Most Recent Submission</h3>
       <p className="RecentSubmission__submission">{ props.recentSubmission }</p>
     </div>
