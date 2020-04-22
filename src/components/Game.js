@@ -14,15 +14,20 @@ const Game = () => {
   }).join(" ");
   
   const [player, setPlayer] = useState(1);
-  const [sentence, setSentence] = useState('');
+  const [recentSubmission, setRecentSubmission] = useState('');
+  const [finalPoem, setFinalPoem] = useState('');
 
   // on reset
   // setPlayer(1)
 
-  const onPlayerSubmissionCallback = (sentence) => {
-    setSentence("The " + sentence.adjective1 + " " + sentence.noun1 + " " + sentence.adverb + " " + sentence.verb + " the " + sentence.adjective2 + " " + sentence.noun2);
+  const onPlayerSubmissionCallback = (submission) => {
+    const sentence = "The " + submission.adjective1 + " " + submission.noun1 + " " + submission.adverb + " " + submission.verb + " the " + submission.adjective2 + " " + submission.noun2;
+    
+    setRecentSubmission(sentence);    
     // increment player
     setPlayer(player + 1);
+    // add recent submission to final poem    
+    setFinalPoem(finalPoem + sentence);    
   }
 
   return (
@@ -37,11 +42,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission recentSubmission={sentence}/>
+      <RecentSubmission recentSubmission={recentSubmission}/>
 
       <PlayerSubmissionForm player={player} onSubmit={onPlayerSubmissionCallback} />
 
-      <FinalPoem recentSubmission={sentence}/>
+      <FinalPoem finalPoem={finalPoem}/>
 
     </div>
   );
