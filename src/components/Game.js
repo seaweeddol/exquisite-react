@@ -37,11 +37,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission currentSubmission={sentence}/>
+      <RecentSubmission recentSubmission={sentence}/>
 
       <PlayerSubmissionForm player={player} onSubmit={onPlayerSubmissionCallback} />
 
-      <FinalPoem currentSubmission={sentence}/>
+      <FinalPoem recentSubmission={sentence}/>
 
     </div>
   );
