@@ -5,20 +5,13 @@ const FinalPoem = (props) => {
 
   const [display, setDisplay] = useState(false);
 
-  const sentences = props.submissions.map((submission) => {    
-    return "The " + submission.adjective1 + " " + submission.noun1 + " " + submission.adverb + " " + submission.verb + " the " + submission.adjective2 + " " + submission.noun2 + ".";
-  });
-
-  let finalPoem = sentences.map(sentence => {
-    return (
-      <p>{sentence}</p>
-    ) 
+  let finalPoem = props.submissions.map(sentence => {
+    return (<p>{sentence}</p>) 
   });
 
   const onReveal = () => {
     setDisplay(true);
   }
-
 
   return (
     <div className="FinalPoem">
