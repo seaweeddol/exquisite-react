@@ -19,12 +19,13 @@ const Game = () => {
 
 
   const onPlayerSubmissionCallback = (playerSubmission) => {
-    // const sentence = "The " + submission.adjective1 + " " + submission.noun1 + " " + submission.adverb + " " + submission.verb + " the " + submission.adjective2 + " " + submission.noun2;
     // make a copy of submissionsList
     const newSubmissions = [...submissionsList];
-    
-    // add playerSubmission to submissions list
-    newSubmissions.push(playerSubmission); 
+
+    // create sentence structure
+    const sentence = "The " + playerSubmission.adjective1 + " " + playerSubmission.noun1 + " " + playerSubmission.adverb + " " + playerSubmission.verb + " the " + playerSubmission.adjective2 + " " + playerSubmission.noun2 + ".";
+
+    newSubmissions.push(sentence); 
     // update state of submissionsList to new list
     setsubmissionsList(newSubmissions);  
     // increment player
@@ -33,7 +34,7 @@ const Game = () => {
 
   // on reset
   // setPlayer(1)
-  
+
   return (
     <div className="Game">
       <h2>Game</h2>
