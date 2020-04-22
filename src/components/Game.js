@@ -12,6 +12,18 @@ const Game = () => {
       return field;
     }
   }).join(" ");
+  
+  const [player, setPlayer] = useState(1);
+  const [sentence, setSentence] = useState('');
+
+  // on reset
+  // setPlayer(1)
+
+  const onPlayerSubmissionCallback = (sentence) => {
+    setSentence("The " + sentence.adjective1 + " " + sentence.noun1 + " " + sentence.adverb + " " + sentence.verb + " the " + sentence.adjective2 + " " + sentence.noun2);
+    // increment player
+    setPlayer(player + 1);
+  }
 
   return (
     <div className="Game">
@@ -25,11 +37,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission currentSubmission={sentence}/>
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm player={player} onSubmit={onPlayerSubmissionCallback} />
 
-      <FinalPoem />
+      <FinalPoem currentSubmission={sentence}/>
 
     </div>
   );
