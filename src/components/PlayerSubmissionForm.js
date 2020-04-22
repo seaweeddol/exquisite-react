@@ -74,7 +74,7 @@ const PlayerSubmissionForm = (props) => {
             name="noun1"
             placeholder="noun"
             type="noun" 
-            value={sentence.noun} 
+            value={sentence.noun1} 
             onChange={onInputChange}
           />
           <input
