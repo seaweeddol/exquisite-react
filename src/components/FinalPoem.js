@@ -11,6 +11,12 @@ const FinalPoem = (props) => {
     sentences.push(sentence)
   });
 
+  let finalPoem = sentences.map(sentence => {
+    return (
+      <p>{sentence}</p>
+    ) 
+  });
+
   return (
     <div className="FinalPoem">
       <section className="FinalPoem__poem">
@@ -18,6 +24,7 @@ const FinalPoem = (props) => {
 
         {/* As players who have submitted one or more lines, I want to see all of the submissions of poetry lines in the section named "Final Poem".
         As a player, I want to see each submission in the final poem section on a different line or paragraph, so that it looks more like a structured poem. */}
+        {finalPoem}
       </section>
 
       <div className="FinalPoem__reveal-btn-container">
