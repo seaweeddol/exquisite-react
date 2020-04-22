@@ -3,13 +3,6 @@ import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = (props) => {
   
-  // User Stories
-  // Game component has the data of my submission, so that the Game component keeps track of all of the submissions
-  // As a player going after the first player, I want to have a cleared, reset form with no text in the input elements
-  // As the third player, I want to see that the header for the submission form is "Player Submission Form for Player #3"
-
-  // Don't be shy about making all of the pieces of props or state that you've determined you need!
-
   const [sentence, setSentence] = useState({
     adjective1: '',
     noun1: '',
@@ -20,8 +13,6 @@ const PlayerSubmissionForm = (props) => {
   });
 
   const onInputChange = (event) => {
-    console.log(`Changing field ${ event.target.name } to ${ event.target.value }`);
-    // Duplicate user into new object
     const newSentence = {
       ...sentence,
     }
@@ -59,9 +50,6 @@ const PlayerSubmissionForm = (props) => {
 
         <div className="PlayerSubmissionForm__poem-inputs">
 
-          {
-            // Put your form inputs here... We've put in one below as an example
-          }
           <p>The</p>
           <input
             name="adjective1"
