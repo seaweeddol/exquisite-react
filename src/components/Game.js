@@ -54,7 +54,7 @@ const Game = () => {
       <section className={submitted ? 'hide' : 'show'}>
         <RecentSubmission className={submissionsList.length > 0 ? "show" : "hide"} recentSubmission={submissionsList[submissionsList.length - 1]}/>
 
-        <PlayerSubmissionForm player={player} onSubmit={onPlayerSubmissionCallback} />
+        <PlayerSubmissionForm player={player} onSubmit={onPlayerSubmissionCallback} fields={FIELDS} />
       </section>
 
       <FinalPoem submissions={submissionsList} submitted={submitted} onFinalPoemCallback={onFinalPoemCallback}/>
@@ -63,11 +63,10 @@ const Game = () => {
   );
 }
 
-
 const FIELDS = [
   "The",
   {
-    key: 'adj1',
+    key: 'adjective1',
     placeholder: 'adjective',
   },
   {
@@ -75,7 +74,7 @@ const FIELDS = [
     placeholder: 'noun',
   },
   {
-    key: 'adv',
+    key: 'adverb',
     placeholder: 'adverb',
   },
   {
@@ -84,7 +83,7 @@ const FIELDS = [
   },
   "the",
   {
-    key: 'adj2',
+    key: 'adjective2',
     placeholder: 'adjective',
   },
   {
