@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = (props) => {
@@ -41,19 +42,22 @@ const PlayerSubmissionForm = (props) => {
     }
   }
 
+  let increment = 0;
   const renderInputs = props.fields.map((field) => {
+    increment += 1
     if (field.key) {
-      if (field.key)
-        return (<input
-          name={field.key}
-          className={(sentence[field.key] === "") ? "PlayerSubmissionFormt__input--invalid" : ""} 
-          placeholder={field.placeholder}
-          type={field.placeholder}
-          value={sentence[field.key]} 
-          onChange={onInputChange}
-        />);
+      increment += 1
+      return (<input
+        key={increment} 
+        name={field.key}
+        className={(sentence[field.key] === "") ? "PlayerSubmissionFormt__input--invalid" : ""} 
+        placeholder={field.placeholder}
+        type={field.placeholder}
+        value={sentence[field.key]} 
+        onChange={onInputChange}
+      />);
     } else {
-        return (<p>{field}</p>);
+        return (<p key={increment}>{field}</p>);
     }
   });
 
@@ -74,6 +78,16 @@ const PlayerSubmissionForm = (props) => {
     </form>
   </div>
   );
+}
+
+PlayerSubmissionForm.propTypes = {
+  player: PropTypes.number.isRequired,
+  onPlayerSubmissionCallback: PropTypes.func,
+  fields: PropTypes.arrayOf(PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+  ])
+  ),
 }
 
 

@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import './FinalPoem.css';
 
 const FinalPoem = (props) => {
 
-  // const [display, setDisplay] = useState(false);
-
+  let increment = 0;
   let finalPoem = props.submissions.map(sentence => {
-    return (<p>{sentence}</p>) 
+    increment += 1
+    return (<p key={increment}>{sentence}</p>) 
   });
 
   const onReveal = () => {
@@ -32,6 +33,12 @@ const FinalPoem = (props) => {
       }
     </div>
   );
+}
+
+FinalPoem.propTypes = {
+  submissions: PropTypes.arrayOf(PropTypes.string),
+  submitted: PropTypes.bool.isRequired,
+  onFinalPoemCallback: PropTypes.func,
 }
 
 export default FinalPoem;

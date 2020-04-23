@@ -52,8 +52,12 @@ const Game = () => {
       </p>
 
       <section className={submitted ? 'hide' : 'show'}>
-        <RecentSubmission className={submissionsList.length > 0 ? "show" : "hide"} recentSubmission={submissionsList[submissionsList.length - 1]}/>
-
+        {
+          submissionsList.length > 0 ? 
+          <RecentSubmission recentSubmission={submissionsList[submissionsList.length - 1]}/> :
+            null
+        }
+        
         <PlayerSubmissionForm player={player} onSubmit={onPlayerSubmissionCallback} fields={FIELDS} />
       </section>
 
