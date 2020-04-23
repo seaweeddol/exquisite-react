@@ -15,6 +15,7 @@ const Game = () => {
 
   const [player, setPlayer] = useState(1);  
   const [submissionsList, setsubmissionsList] = useState([]);
+  const [submitted, setSubmitted] = useState(false);
 
 
   const onPlayerSubmissionCallback = (playerSubmission) => {
@@ -31,9 +32,13 @@ const Game = () => {
     setPlayer(player + 1);
   }
 
+  const onFinalPoemCallback = (bool) => {
+    setSubmitted(bool);
+  }
+
   // on reset
   // setPlayer(1)
-  
+    
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -46,11 +51,13 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission className={submissionsList.length > 0 ? "show" : "hide"} recentSubmission={submissionsList[submissionsList.length - 1]}/>
+      <section className={submitted ? 'hide' : 'show'}>
+        <RecentSubmission className={submissionsList.length > 0 ? "show" : "hide"} recentSubmission={submissionsList[submissionsList.length - 1]}/>
 
-      <PlayerSubmissionForm player={player} onSubmit={onPlayerSubmissionCallback} />
+        <PlayerSubmissionForm player={player} onSubmit={onPlayerSubmissionCallback} />
+      </section>
 
-      <FinalPoem submissions={submissionsList}/>
+      <FinalPoem submissions={submissionsList} submitted={submitted} onFinalPoemCallback={onFinalPoemCallback}/>
 
     </div>
   );
