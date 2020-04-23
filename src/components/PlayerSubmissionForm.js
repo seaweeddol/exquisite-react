@@ -41,6 +41,23 @@ const PlayerSubmissionForm = (props) => {
     }
   }
 
+  const renderInputs = props.fields.map((field) => {
+    if (field.key) {
+      if (field.key)
+        return (<input
+          name={field.key}
+          className={(sentence[field.key] === "") ? "PlayerSubmissionFormt__input--invalid" : ""} 
+          placeholder={field.placeholder}
+          type={field.placeholder}
+          value={sentence[field.key]} 
+          onChange={onInputChange}
+        />);
+    } else {
+        return (<p>{field}</p>);
+    }
+  });
+
+
   return (
   <div className="PlayerSubmissionForm">
     <h3>Player Submission Form for Player #{ props.player }</h3>
@@ -48,59 +65,7 @@ const PlayerSubmissionForm = (props) => {
     <form className="PlayerSubmissionForm__form" onSubmit={onSubmitLine}>
 
       <div className="PlayerSubmissionForm__poem-inputs">
-
-        <p>The</p>
-        <input
-          name="adjective1"
-          className={(sentence.adjective1 === "") ? "PlayerSubmissionFormt__input--invalid" : ""} 
-          placeholder="adjective"
-          type="adjective" 
-          value={sentence.adjective1} 
-          onChange={onInputChange}
-        />
-        <input
-          name="noun1"
-          className={(sentence.noun1 === "") ? "PlayerSubmissionFormt__input--invalid" : ""} 
-          placeholder="noun"
-          type="noun" 
-          value={sentence.noun1} 
-          onChange={onInputChange}
-        />
-        <input
-          name="adverb"
-          className={(sentence.adverb === "") ? "PlayerSubmissionFormt__input--invalid" : ""} 
-          placeholder="adverb"
-          type="adverb" 
-          value={sentence.adverb} 
-          onChange={onInputChange}
-        />
-        <input
-          name="verb"
-          className={(sentence.verb === "") ? "PlayerSubmissionFormt__input--invalid" : ""} 
-          placeholder="verb"
-          type="verb" 
-          value={sentence.verb} 
-          onChange={onInputChange}
-        />
-        <p>the</p>
-        <input
-          name="adjective2"
-          className={(sentence.adjective2 === "") ? "PlayerSubmissionFormt__input--invalid" : ""} 
-          placeholder="another adjective"
-          type="adjective" 
-          value={sentence.adjective2} 
-          onChange={onInputChange}
-        />
-        <input
-          name="noun2"
-          className={(sentence.noun2 === "") ? "PlayerSubmissionFormt__input--invalid" : ""} 
-          placeholder="another noun"
-          type="noun" 
-          value={sentence.noun2} 
-          onChange={onInputChange}
-        />
-        <p>.</p>
-
+        {renderInputs}
       </div>
 
       <div className="PlayerSubmissionForm__submit">
